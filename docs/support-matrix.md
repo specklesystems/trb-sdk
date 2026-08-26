@@ -65,7 +65,11 @@ All: 0 out-of-range indices, 0 bbox mismatches. Worst relative bbox error is
 the `BRepWithNormals`/`BRepWithUV` paths on real data and surfaced the
 keyhole hole encoding (see [format.md](format.md)); they also carry
 `None`-type identifiers heavily and ~0.4% degenerate sliver triangles, which
-is the geometry itself, not a decode error. The Tekla sample surfaced
-SweptDiskSolid (rebar) at scale and pinned down its hemispherical end caps.
+is the geometry itself, not a decode error. SketchUp also emits two-sided
+faces as coincident FrontFace/BackFace shell pairs — consumers rendering
+double-sided must dedupe or honor `sidedness` (see
+[format.md](format.md#sidedness-and-frontback-shell-pairs)). The Tekla sample
+surfaced SweptDiskSolid (rebar) at scale and pinned down its hemispherical
+end caps.
 Revit-written samples are still wanted; run `trb-verify <dir>` to check new
 files.

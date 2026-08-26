@@ -94,6 +94,20 @@ additionally averages them against computed triangle normals for smooth
 shading; that is a rendering choice, not part of the file, so this reader
 returns what is stored.
 
+## Sidedness and front/back shell pairs
+
+`SurfaceMaterial.sidedness` is load-bearing, not a hint. The SketchUp writer
+models a two-sided SketchUp face as **two coincident mirror shells** on the
+same entity: a `FrontFace` instance (typically textured) and a `BackFace`
+instance carrying the back material — identical vertex positions, reversed
+windings, exactly negated normals. Trimble's viewer renders each shell with
+sidedness-aware backface culling, so they never overlap on screen. A consumer
+that renders double-sided must either honor `sidedness` or drop each
+`BackFace` instance whose entity carries a coincident non-`BackFace` twin
+(same bounding box); rendering both produces severe z-fighting. Orphan back
+shells (no front twin) do occur and must be kept. The Tekla, IFC and
+Navisworks writers emit only `Single`/`Double` materials and are unaffected.
+
 ## Swept disk solids
 
 A `SweptDiskSolidContainer` is one reinforcement group as written by the Tekla
