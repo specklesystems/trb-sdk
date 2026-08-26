@@ -1,0 +1,768 @@
+// TrimBIM (.trb) schema, reconstructed for interoperability.
+//
+// Recovered from the flatc-generated TypeScript published in
+// TrimbimWorker.js.map (Trimble Connect Web3D build v5.0.6649).
+// Field names, slot order, types, defaults and required markers are
+// taken from the generated accessors, so the wire layout is exact.
+// Table names below match the generated class names.
+
+namespace TrimBim;
+
+enum AlignmentType : ubyte {
+  Invalid = 0,
+  LeftTop = 1,
+  LeftCenter = 2,
+  LeftBottom = 3,
+  CenterTop = 4,
+  CenterCenter = 5,
+  CenterBottom = 6,
+  RightTop = 7,
+  RightCenter = 8,
+  RightBottom = 9,
+  LeftBaseLine = 10,
+  CenterBaseLine = 11,
+  RightBaseLine = 12,
+  LeftBottomBaseLine = 13,
+  CenterBottomBaseLine = 14,
+  RightBottomBaseLine = 15,
+}
+
+enum BoltType : ubyte {
+  None = 0,
+  Normal = 1,
+  Round = 2,
+  Countersunk = 3,
+  Stud = 4,
+}
+
+enum GeometryType : ubyte {
+  None = 0,
+  BRep = 1,
+  TriangleMesh = 2,
+  TriangleMesh8 = 3,
+  SweptDiskSolid = 4,
+  GraphicsContainer = 5,
+  BRepWithUV = 6,
+  BRepWithNormals = 7,
+  AlignmentCurve = 8,
+  GridLineContainer = 9,
+  TexturedTriangleMesh = 10,
+  TexturedTriangleMesh8 = 11,
+  CoordinateGeometryPoint = 12,
+  BillboardText = 13,
+  Billboard = 14,
+  TexturedBillboard = 15,
+  Bolt = 16,
+}
+
+enum HierarchyType : ubyte {
+  Unknown = 0,
+  SpatialHierarchy = 1,
+  SpatialContainment = 2,
+  Containment = 3,
+  ElementAssembly = 4,
+  Group = 5,
+  System = 6,
+  Zone = 7,
+  VoidsElement = 8,
+  FillsElement = 9,
+  ConnectsPortToElement = 10,
+  ConnectsPorts = 11,
+  ServicesBuildings = 12,
+  Positions = 13,
+}
+
+enum HorizontalSegmentType : ubyte {
+  Invalid = 0,
+  LineSegment = 1,
+  CircularArcSegment = 2,
+  ClothoidalArcSegment = 3,
+  TransientCurveSegment = 4,
+}
+
+enum HorizontalTransitionCurveType : ubyte {
+  Invalid = 0,
+  BiquadraticParabola = 1,
+  BlossCurve = 2,
+  ClothoidCurve = 3,
+  CosineCurve = 4,
+  CubicParabola = 5,
+  SineCurve = 6,
+}
+
+enum IdentifierType : ubyte {
+  Guid = 0,
+  String = 1,
+  SpatialHash = 2,
+  DwgHandle = 3,
+  None = 4,
+}
+
+enum LayoutType : ubyte {
+  Invalid = 0,
+  LeftToRight = 1,
+  RightToLeft = 2,
+  Vertical = 3,
+}
+
+enum LineStyle : ubyte {
+  Normal = 0,
+  Border = 1,
+  Center = 2,
+  DashDot = 3,
+  Dashed = 4,
+  Divide = 5,
+  Dot = 6,
+  Hidden = 7,
+  ISO02W100 = 8,
+  ISO03W100 = 9,
+  ISO04W100 = 10,
+  ISO05W100 = 11,
+  ISO06W100 = 12,
+  ISO07W100 = 13,
+  ISO08W100 = 14,
+  ISO09W100 = 15,
+  ISO10W100 = 16,
+  ISO11W100 = 17,
+  ISO12W100 = 18,
+  ISO13W100 = 19,
+  ISO14W100 = 20,
+  ISO15W100 = 21,
+}
+
+enum Logical : ubyte {
+  False = 0,
+  True = 1,
+  Unknown = 2,
+}
+
+enum OwnerHistoryChangeAction : ubyte {
+  NoChange = 0,
+  Modified = 1,
+  Added = 2,
+  Deleted = 3,
+}
+
+enum OwnerHistoryState : ubyte {
+  Undefined = 0,
+  ReadWrite = 1,
+  ReadOnly = 2,
+  Locked = 3,
+  ReadWriteLocked = 4,
+  ReadOnlyLocked = 5,
+}
+
+enum PropertyType : ubyte {
+  LengthMeasure = 0,
+  AreaMeasure = 1,
+  VolumeMeasure = 2,
+  MassMeasure = 3,
+  AngleMeasure = 4,
+  StringValue = 5,
+  IntValue = 6,
+  DoubleValue = 7,
+  DateTime = 8,
+  Logical = 9,
+  Boolean = 10,
+}
+
+enum SegmentType : ubyte {
+  LineSegment = 0,
+  PolyLine = 1,
+  Arc = 2,
+}
+
+enum Sidedness : ubyte {
+  Single = 0,
+  Double = 1,
+  FrontFace = 2,
+  BackFace = 3,
+}
+
+enum TextureType : ubyte {
+  None = 0,
+  Png = 1,
+  JPeg = 2,
+}
+
+enum VerticalSegmentType : ubyte {
+  Invalid = 0,
+  LineSegment = 1,
+  CircularArcSegment = 2,
+  ParabolicArcSegment = 3,
+}
+
+// ---------------------------------------------------------------
+// structs (inline, fixed size, no vtable)
+// ---------------------------------------------------------------
+
+struct Vec3f {
+  x:float;
+  y:float;
+  z:float;
+}  // 12 bytes
+
+struct AABB3f {
+  min:Vec3f;
+  max:Vec3f;
+}  // 24 bytes
+
+struct Vec3d {
+  x:double;
+  y:double;
+  z:double;
+}  // 24 bytes
+
+struct Arc3d {
+  center:Vec3d;
+  axis:Vec3d;
+  ref_direction:Vec3d;
+  radius:double;
+  angle:double;
+}  // 88 bytes
+
+struct Arc3f {
+  center:Vec3f;
+  axis:Vec3f;
+  ref_direction:Vec3f;
+  radius:float;
+  angle:float;
+}  // 44 bytes
+
+struct BoltTop {
+  top_diameter:float;
+  thickness:float;
+  diameter:float;
+  length:float;
+  type:BoltType;
+}  // 20 bytes
+
+struct Placement3 {
+  origin:Vec3d;
+  x_axis:Vec3f;
+  y_axis:Vec3f;
+}  // 48 bytes
+
+struct Entity {
+  type:IdentifierType;
+  identifier_index:uint;
+  class_index:uint;
+  global_placement:Placement3;
+}  // 64 bytes
+
+struct GeometryDefinition {
+  type:GeometryType;
+  index:uint;
+  bounding_box:AABB3f;
+}  // 32 bytes
+
+struct GeometryInstance {
+  local_placement_id:uint;
+  entity_id:uint;
+  definition_id:uint;
+  surface_material_id:uint;
+  layer_id:uint;
+}  // 20 bytes
+
+struct Guid {
+  data1:uint;
+  data2:ushort;
+  data3:ushort;
+  data41:ubyte;
+  data42:ubyte;
+  data43:ubyte;
+  data44:ubyte;
+  data45:ubyte;
+  data46:ubyte;
+  data47:ubyte;
+  data48:ubyte;
+}  // 16 bytes
+
+struct HierarchyNode {
+  parent_element_id:uint;
+  child_element_id:uint;
+  type:HierarchyType;
+}  // 12 bytes
+
+struct History {
+  state:OwnerHistoryState;
+  change_action:OwnerHistoryChangeAction;
+  creation_date:long;
+  last_modification_date:long;
+}  // 24 bytes
+
+struct Hole {
+  offset:float;
+  length:float;
+  diameter:float;
+  xslot:float;
+  yslot:float;
+}  // 20 bytes
+
+struct IndexedVertex {
+  position_index:ushort;
+  normal_index:ushort;
+}  // 4 bytes
+
+struct IndexedVertex8 {
+  position_index:ubyte;
+  normal_index:ubyte;
+}  // 2 bytes
+
+struct Line3d {
+  start:Vec3d;
+  end:Vec3d;
+}  // 48 bytes
+
+struct Line3f {
+  start:Vec3f;
+  end:Vec3f;
+}  // 24 bytes
+
+struct Nut {
+  offset:float;
+  inner_diameter:float;
+  outer_diameter:float;
+  thickness:float;
+}  // 16 bytes
+
+struct PositionNormal {
+  position:Vec3f;
+  normal:Vec3f;
+}  // 24 bytes
+
+struct UV {
+  u:float;
+  v:float;
+}  // 8 bytes
+
+struct PositionUV {
+  position:Vec3f;
+  uv:UV;
+}  // 20 bytes
+
+struct Product {
+  owner:uint;
+  history:uint;
+  name:uint;
+  description:uint;
+  object_type:uint;
+}  // 20 bytes
+
+struct ProductBinding {
+  entity_id:uint;
+  product_id:uint;
+}  // 8 bytes
+
+struct SinglePropertyDefinition {
+  name:uint;
+  type:PropertyType;
+}  // 8 bytes
+
+struct SpatialHash {
+  x:double;
+  y:double;
+  z:double;
+  d0:double;
+  d1:double;
+  d2:double;
+  d3:double;
+  d4:double;
+  d5:double;
+  d6:double;
+  d7:double;
+}  // 88 bytes
+
+struct SurfaceMaterial {
+  r:ubyte;
+  g:ubyte;
+  b:ubyte;
+  a:ubyte;
+  texture_id:uint;
+  sidedness:Sidedness;
+  line_style:LineStyle;
+  metallic:float;
+  roughness:float;
+}  // 20 bytes
+
+struct Vec2d {
+  x:double;
+  y:double;
+}  // 16 bytes
+
+struct TexturedBillboard {
+  left_up_xy:Vec2d;
+  left_up_uv:Vec2d;
+  right_down_xy:Vec2d;
+  right_down_uv:Vec2d;
+  is_in_world_units:bool;
+}  // 72 bytes
+
+struct Washer {
+  offset:float;
+  inner_diameter:float;
+  outer_diameter:float;
+  thickness:float;
+}  // 16 bytes
+
+// ---------------------------------------------------------------
+// tables
+// ---------------------------------------------------------------
+
+table HorizontalCircularArcSegment {
+  start_tag:string (required);
+  end_tag:string (required);
+  start_point:Vec2d;
+  start_direction:double = 0;
+  segment_length:double = 0;
+  radius:double = 0;
+  is_ccw:bool = false;
+}
+
+table HorizontalClothoidalArcSegment {
+  start_tag:string (required);
+  end_tag:string (required);
+  start_point:Vec2d;
+  start_direction:double = 0;
+  segment_length:double = 0;
+  start_radius:double = 0;
+  clothoid_constant:double = 0;
+  is_ccw:bool = false;
+  is_entry:bool = false;
+}
+
+table HorizontalLineSegment {
+  start_tag:string (required);
+  end_tag:string (required);
+  start_point:Vec2d;
+  start_direction:double = 0;
+  segment_length:double = 0;
+}
+
+table HorizontalTransitionArcSegment {
+  start_tag:string (required);
+  end_tag:string (required);
+  start_point:Vec2d;
+  start_direction:double = 0;
+  segment_length:double = 0;
+  start_radius:double = 0;
+  end_radius:double = 0;
+  is_start_radius_ccw:bool = false;
+  is_end_radius_ccw:bool = false;
+  type:HorizontalTransitionCurveType = Invalid;
+}
+
+table HorizontalCurve {
+  start_along_distance:double = 0;
+  segment_types:[HorizontalSegmentType] (required);
+  line_segments:[HorizontalLineSegment] (required);
+  circular_arc_segments:[HorizontalCircularArcSegment] (required);
+  clothoidal_arc_segments:[HorizontalClothoidalArcSegment] (required);
+  transition_arc_segments:[HorizontalTransitionArcSegment] (required);
+}
+
+table VerticalCircularArcSegment {
+  start_tag:string (required);
+  end_tag:string (required);
+  start_dist_along:double = 0;
+  horizontal_length:double = 0;
+  start_height:double = 0;
+  start_gradient:double = 0;
+  radius:double = 0;
+  is_convex:bool = false;
+}
+
+table VerticalLineSegment {
+  start_tag:string (required);
+  end_tag:string (required);
+  start_dist_along:double = 0;
+  horizontal_length:double = 0;
+  start_height:double = 0;
+  start_gradient:double = 0;
+}
+
+table VerticalParabolicArcSegment {
+  start_tag:string (required);
+  end_tag:string (required);
+  start_dist_along:double = 0;
+  horizontal_length:double = 0;
+  start_height:double = 0;
+  start_gradient:double = 0;
+  parabola_constant:double = 0;
+  is_convex:bool = false;
+}
+
+table VerticalCurve {
+  segment_types:[VerticalSegmentType] (required);
+  line_segments:[VerticalLineSegment] (required);
+  circular_arc_segments:[VerticalCircularArcSegment] (required);
+  parabolic_arc_segments:[VerticalParabolicArcSegment] (required);
+}
+
+table AlignmentCurve {
+  horizontal_curve:HorizontalCurve (required);
+  vertical_curve:VerticalCurve (required);
+  name:string (required);
+}
+
+table InnerWire {
+  outer_wire:ushort;
+  vertex_indices:[ushort] (required);
+}
+
+table OuterWire {
+  vertex_indices:[ushort] (required);
+}
+
+table BRep {
+  outer_wires:[OuterWire] (required);
+  inner_wires:[InnerWire] (required);
+  vertices:[Vec3f] (required);
+}
+
+table BRepWithNormal {
+  outer_wires:[OuterWire] (required);
+  inner_wires:[InnerWire] (required);
+  vertices:[PositionNormal] (required);
+}
+
+table BRepWithUV {
+  outer_wires:[OuterWire] (required);
+  inner_wires:[InnerWire] (required);
+  vertices:[PositionUV] (required);
+}
+
+table Billboard {
+}
+
+table BillboardText {
+  text_style_id:uint;
+  text:string (required);
+}
+
+table Bolt {
+  top:BoltTop;
+  washers:[Washer] (required);
+  nuts:[Nut] (required);
+  holes:[Hole] (required);
+}
+
+table CoordinateGeometryPoint {
+  name:string (required);
+  symbol:string (required);
+}
+
+table Polyline3f {
+  points:[Vec3f];
+}
+
+table Directrix {
+  types:[SegmentType] (required);
+  indexes:[uint] (required);
+  line_segments:[Line3f] (required);
+  poly_lines:[Polyline3f] (required);
+  arcs:[Arc3f] (required);
+}
+
+table GraphicsContainer {
+  line_segments:[Line3f] (required);
+  arcs:[Arc3f] (required);
+}
+
+table GridArc {
+  axis_tag:string (required);
+  arc:Arc3d (required);
+}
+
+table GridLineSegment {
+  axis_tag:string (required);
+  line_segment:Line3d (required);
+}
+
+table GridLineContainer {
+  grid_line_segments:[GridLineSegment] (required);
+  grid_arcs:[GridArc] (required);
+}
+
+table MapConversion {
+  eastings:double = 0;
+  northings:double = 0;
+  orthogonal_height:double = 0;
+  x_axis_abscissa:double = 0;
+  x_axis_ordinate:double = 0;
+  scale_to_map_projection:double = 0;
+  projection_name:string;
+  projection_description:string;
+  projection_geodetic_datum:string;
+  projection_vertical_datum:string;
+  projection_projection_type:string;
+  projection_zone:string;
+  projection_unit_name:string;
+  projection_scale_to_metric:double = 0;
+  source_origin:Vec3d;
+}
+
+table MetadataEntry {
+  key:string (required);
+  value:string (required);
+}
+
+table ModelEntities {
+  entities:[Entity] (required);
+  hierarchies:[HierarchyNode] (required);
+  guid_identifiers:[Guid] (required);
+  string_identifiers:[string] (required);
+  spatial_hash_identifiers:[SpatialHash] (required);
+  dwg_handle_identifiers:[long] (required);
+  entity_classes:[string] (required);
+}
+
+table SweptDiskSolidContainer {
+  directrices:[Directrix] (required);
+  radius:[double] (required);
+}
+
+table TextStyle {
+  font:string;
+  size:double = 0;
+  options:uint;
+  vertical_align:double = 0;
+  horizontal_align:double = 0;
+  rotation_angle:double = 0;
+  layout:LayoutType = Invalid;
+  alignment:AlignmentType = Invalid;
+  max_auto_scale:double = 0;
+  vertical_distance_to_object:double = 0;
+}
+
+table Texture {
+  type:TextureType = None;
+  bytes:[byte] (required);
+}
+
+table TexturedTriangleMesh {
+  positions:[Vec3f] (required);
+  normals:[Vec3f] (required);
+  uvs:[UV] (required);
+  vertices:[IndexedVertex] (required);
+  indices:[ushort] (required);
+}
+
+table TexturedTriangleMesh8 {
+  positions:[Vec3f] (required);
+  normals:[Vec3f] (required);
+  uvs:[UV] (required);
+  vertices:[IndexedVertex8] (required);
+  indices:[ubyte] (required);
+}
+
+table TriangleMesh {
+  positions:[Vec3f] (required);
+  normals:[Vec3f] (required);
+  vertices:[IndexedVertex] (required);
+  indices:[ushort] (required);
+}
+
+table TriangleMesh8 {
+  positions:[Vec3f] (required);
+  normals:[Vec3f] (required);
+  vertices:[IndexedVertex8] (required);
+  indices:[ubyte] (required);
+}
+
+table ModelGeometry {
+  local_placements:[Placement3] (required);
+  surface_materials:[SurfaceMaterial] (required);
+  layers:[string] (required);
+  definitions:[GeometryDefinition] (required);
+  instances:[GeometryInstance] (required);
+  textures:[Texture] (required);
+  b_reps:[BRep] (required);
+  triangle_meshes:[TriangleMesh] (required);
+  triangle_meshes8:[TriangleMesh8] (required);
+  textured_triangle_meshes:[TexturedTriangleMesh] (required);
+  textured_triangle_meshes8:[TexturedTriangleMesh8] (required);
+  swept_disk_solids:[SweptDiskSolidContainer] (required);
+  b_rep_with_uvs:[BRepWithUV] (required);
+  b_rep_with_normals:[BRepWithNormal] (required);
+  graphics_containers:[GraphicsContainer] (required);
+  alignment_curves:[AlignmentCurve] (required);
+  grid_line_containers:[GridLineContainer] (required);
+  coordinate_geometry_points:[CoordinateGeometryPoint] (required);
+  billboard_texts:[BillboardText] (required);
+  text_styles:[TextStyle] (required);
+  billboards:[Billboard] (required);
+  textured_billboards:[TexturedBillboard] (required);
+  bolts:[Bolt] (required);
+  layer_default_visibility:[bool];
+}
+
+table Owner {
+  person_id:string;
+  person_family_name:string;
+  person_given_name:string;
+  person_middle_names:string;
+  person_roles:string;
+  organization_id:string;
+  organization_name:string;
+  organization_description:string;
+  organization_roles:string;
+  application_version:string;
+  application_full_name:string;
+  application_identifier:string;
+}
+
+table PropertySet {
+  definition:uint;
+  values:[uint] (required);
+  entities:[uint] (required);
+}
+
+table PropertySetDefinition {
+  name:uint;
+  properties:[SinglePropertyDefinition] (required);
+}
+
+table ModelProperties {
+  product_bindings:[ProductBinding] (required);
+  products:[Product] (required);
+  owners:[Owner] (required);
+  histories:[History] (required);
+  names:[string] (required);
+  descriptions:[string] (required);
+  object_types:[string] (required);
+  property_set_bindings:[PropertySet] (required);
+  property_set_names:[string] (required);
+  property_names:[string] (required);
+  definitions:[PropertySetDefinition] (required);
+  length_measures:[double] (required);
+  area_measures:[double] (required);
+  volume_measures:[double] (required);
+  mass_measures:[double] (required);
+  angle_measures:[double] (required);
+  string_values:[string] (required);
+  double_values:[double] (required);
+  date_time_values:[long] (required);
+}
+
+table XRef {
+  filename:string (required);
+  origin:Vec3d (required);
+  axis_x:Vec3d (required);
+  axis_y:Vec3d (required);
+  axis_z:Vec3d (required);
+  scale:Vec3d (required);
+}
+
+table Model {
+  entities:ModelEntities (required);
+  properties:ModelProperties (required);
+  geometry:ModelGeometry (required);
+  map_conversions:[MapConversion] (required);
+  metadata:[MetadataEntry] (required);
+  xrefs:[XRef];
+}
+
+root_type Model;
+file_identifier "TRB8";
+file_extension "trb";

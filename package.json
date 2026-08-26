@@ -1,0 +1,49 @@
+{
+  "name": "@speckle/trb-sdk",
+  "version": "0.1.0",
+  "description": "SDK for TrimBIM (.trb) files: reader, verifier, and example exporters. Zero runtime dependencies, Node and browser.",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "schemas"
+  ],
+  "bin": {
+    "trb-inspect": "dist/inspect.js",
+    "trb-verify": "dist/verify.js",
+    "trb-export-csv": "dist/export-csv.js",
+    "trb-export-usdz": "dist/export-usdz.js"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "tsc -p tsconfig.json && node --test dist/*.test.js",
+    "verify": "tsc -p tsconfig.json && node dist/verify.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/specklesystems/trb-sdk.git"
+  },
+  "keywords": [
+    "trimbim",
+    "trb",
+    "trimble",
+    "bim",
+    "flatbuffers",
+    "speckle"
+  ],
+  "license": "AGPL-3.0-only",
+  "engines": {
+    "node": ">=18"
+  },
+  "devDependencies": {
+    "@types/node": "^26.3.0",
+    "typescript": "^5.9.3"
+  }
+}
