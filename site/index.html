@@ -1,0 +1,643 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#101319" />
+    <meta
+      name="description"
+      content="An open-source TypeScript reader for TrimBIM (.trb) files. Extract geometry, object properties and model hierarchy in Node.js or the browser."
+    />
+    <meta property="og:title" content="TRB Reader — by Speckle" />
+    <meta
+      property="og:description"
+      content="Read TrimBIM files from Trimble Connect. Export USDZ and CSV, or use the model data in your own application."
+    />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:url"
+      content="https://specklesystems.github.io/trb-sdk/"
+    />
+    <title>TRB Reader — by Speckle</title>
+    <link rel="canonical" href="https://specklesystems.github.io/trb-sdk/" />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='8' fill='%23136cff'/%3E%3Ctext x='20' y='26' text-anchor='middle' font-family='monospace' font-size='17' font-weight='700' fill='white'%3Etrb%3C/text%3E%3C/svg%3E"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="./site.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="header wrap">
+      <a class="brand" href="./" aria-label="TRB Reader by Speckle, home"
+        ><img
+          src="./assets/speckle.svg"
+          width="103"
+          height="26"
+          alt="Speckle"
+        /><span class="brand-divider"></span
+        ><span class="brand-product">TRB Reader</span></a
+      >
+      <nav aria-label="Main navigation">
+        <a href="#examples">Examples</a>
+        <a href="#quickstart">Quickstart</a>
+        <a class="repo-link" href="https://github.com/specklesystems/trb-sdk"
+          >GitHub <span aria-hidden="true">↗</span></a
+        >
+      </nav>
+    </header>
+    <main id="main">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="wrap">
+          <div class="hero-intro">
+            <div>
+              <p class="eyebrow">
+                <span class="file-mark">.trb</span> OPEN SOURCE · BY SPECKLE
+              </p>
+              <h1 id="hero-title">TrimBIM<br /><span>file reader.</span></h1>
+              <div class="hero-tags" aria-label="SDK details">
+                <span>TypeScript</span><span>Node.js + browser</span
+                ><span>AGPL-3.0</span>
+              </div>
+            </div>
+            <div class="hero-copy">
+              <p>
+                An open-source reader for <strong>TrimBIM (.trb)</strong>, the
+                model format used by
+                <a
+                  class="prose-link"
+                  href="https://www.trimble.com/en/products/trimble-connect"
+                  >Trimble Connect</a
+                >. Extract geometry and object properties, together with
+                materials, placements and model hierarchy.
+              </p>
+              <p>
+                Read the data in Node.js or the browser. Export it to USDZ or
+                CSV, or use the TypeScript API to build your own integration.
+              </p>
+              <div class="hero-actions">
+                <a class="button button-primary" href="#quickstart"
+                  >Use the reader <span aria-hidden="true">↓</span></a
+                ><a class="text-link" href="#examples"
+                  >View output examples <span aria-hidden="true">↓</span></a
+                >
+              </div>
+            </div>
+          </div>
+
+          <figure
+            class="flow"
+            aria-labelledby="flow-title"
+            aria-describedby="flow-caption"
+          >
+            <div class="flow-heading">
+              <h2 id="flow-title" class="eyebrow">
+                01 / FROM MODEL FILES TO YOUR APPLICATION
+              </h2>
+              <span>TrimBIM workflow</span>
+            </div>
+            <div class="flow-pipeline">
+              <div class="flow-source">
+                <span class="node-label">MODEL PROCESSING</span>
+                <a
+                  class="source-title"
+                  href="https://www.trimble.com/en/products/trimble-connect"
+                  >Trimble Connect <span aria-hidden="true">↗</span></a
+                >
+                <div class="source-formats" aria-label="Example source formats">
+                  <span>IFC</span><span>SketchUp</span
+                  ><span>Tekla Structures</span><span>Navisworks</span
+                  ><span class="more-formats">and more</span>
+                </div>
+                <p>Save a model as TrimBIM</p>
+              </div>
+              <div class="flow-arrow" aria-hidden="true">
+                <span>export</span><i></i>
+              </div>
+              <div class="flow-file">
+                <span class="node-label">TRIMBIM FILE</span>
+                <strong>.trb</strong>
+                <span class="file-contents"
+                  >Geometry<br />Properties<br />Hierarchy</span
+                >
+              </div>
+              <div class="flow-arrow" aria-hidden="true">
+                <span>read with<br />the SDK</span><i></i>
+              </div>
+              <div class="flow-destinations">
+                <span class="node-label">USE THE MODEL DATA</span>
+                <div class="destination">
+                  <strong>USDZ</strong><span>Geometry + materials</span>
+                </div>
+                <div class="destination">
+                  <strong>CSV</strong><span>Object properties</span>
+                </div>
+                <a class="destination destination-speckle" href="#examples">
+                  <strong>Speckle</strong
+                  ><span>View examples <span aria-hidden="true">↓</span></span>
+                </a>
+                <div class="destination">
+                  <strong>Your application</strong><span>TypeScript API</span>
+                </div>
+              </div>
+            </div>
+            <figcaption id="flow-caption">
+              <span
+                >USDZ and CSV exporters are included. Connect the reader’s
+                output to Speckle or other tools through your own
+                integration.</span
+              ><a
+                href="https://help.trimble.com/doc/trimble-connect/trimble-connect/connect-for-windows/models/export-and-save-as-trimbim"
+                >How to get a .trb file <span aria-hidden="true">↗</span></a
+              >
+            </figcaption>
+          </figure>
+          <div class="hero-foot">
+            <span
+              >By
+              <a class="prose-link" href="https://speckle.systems">Speckle</a> ·
+              Read-only access to geometry and model data.</span
+            ><span>EARLY ALPHA <span class="separator">/</span> v0.1</span>
+          </div>
+        </div>
+      </section>
+      <aside class="alpha-callout" aria-label="Release status">
+        <div class="wrap">
+          <p>
+            This is an early alpha release.
+            <a
+              class="prose-link"
+              href="https://github.com/specklesystems/trb-sdk/issues"
+              >Contributions welcome! <span aria-hidden="true">↗</span></a
+            >
+          </p>
+        </div>
+      </aside>
+
+      <section
+        class="examples wrap section-space"
+        id="examples"
+        aria-labelledby="examples-title"
+      >
+        <div class="examples-heading">
+          <div>
+            <p class="eyebrow">02 / OUTPUT EXAMPLES</p>
+            <h2 id="examples-title">TRB output,<br />viewed in Speckle.</h2>
+          </div>
+          <p>
+            Models originating from IFC, SketchUp and Tekla Structures, read
+            from TrimBIM and displayed in Speckle. Choose a source format to
+            explore the output.
+          </p>
+        </div>
+        <div
+          class="example-tabs"
+          role="tablist"
+          aria-label="Example source format"
+        >
+          <button
+            type="button"
+            role="tab"
+            id="example-tab-ifc"
+            aria-controls="example-ifc"
+            aria-selected="true"
+            tabindex="0"
+          >
+            IFC
+          </button>
+          <button
+            type="button"
+            role="tab"
+            id="example-tab-skp"
+            aria-controls="example-skp"
+            aria-selected="false"
+            tabindex="-1"
+          >
+            SketchUp <span class="tab-extension">.skp</span>
+          </button>
+          <button
+            type="button"
+            role="tab"
+            id="example-tab-tekla"
+            aria-controls="example-tekla"
+            aria-selected="false"
+            tabindex="-1"
+          >
+            Tekla
+          </button>
+        </div>
+        <div
+          class="example-panel"
+          role="tabpanel"
+          id="example-ifc"
+          aria-labelledby="example-tab-ifc"
+          tabindex="0"
+        >
+          <iframe
+            title="IFC model read from TrimBIM and displayed in Speckle"
+            src="https://next.speckle.dev/projects/86b59ef59d/models/ea662a7613@d8093bb55a?embedToken=846ea2fb9118a29f3126c6cd89712283b7350003d8#embed=%7B%22isEnabled%22%3Atrue%2C%22isTransparent%22%3Atrue%2C%22noScroll%22%3Atrue%7D"
+            loading="lazy"
+            allow="fullscreen; clipboard-write"
+            allowfullscreen
+            referrerpolicy="strict-origin-when-cross-origin"
+          ></iframe>
+          <div class="example-meta">
+            <div>
+              <strong>IFC → TRB → Speckle</strong>
+              <p>Drag to orbit. Open in Speckle for a larger view.</p>
+            </div>
+            <a
+              href="https://next.speckle.dev/projects/86b59ef59d/models/ea662a7613@d8093bb55a?embedToken=846ea2fb9118a29f3126c6cd89712283b7350003d8#embed=%7B%22isEnabled%22%3Atrue%2C%22isTransparent%22%3Atrue%2C%22noScroll%22%3Atrue%7D"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Open in Speckle <span aria-hidden="true">↗</span></a
+            >
+          </div>
+        </div>
+        <div
+          class="example-panel"
+          role="tabpanel"
+          id="example-skp"
+          aria-labelledby="example-tab-skp"
+          tabindex="0"
+          hidden
+        >
+          <iframe
+            title="SketchUp model read from TrimBIM and displayed in Speckle"
+            data-src="https://next.speckle.dev/projects/86b59ef59d/models/be848d83b9@b2162e7e50?embedToken=1ff6dd8fe5ac4a45acc36b0254c16968c7c1f2b356#embed=%7B%22isEnabled%22%3Atrue%2C%22isTransparent%22%3Atrue%2C%22noScroll%22%3Atrue%7D"
+            loading="lazy"
+            allow="fullscreen; clipboard-write"
+            allowfullscreen
+            referrerpolicy="strict-origin-when-cross-origin"
+          ></iframe>
+          <div class="example-meta">
+            <div>
+              <strong>SketchUp → TRB → Speckle</strong>
+              <p>Drag to orbit. Open in Speckle for a larger view.</p>
+            </div>
+            <a
+              href="https://next.speckle.dev/projects/86b59ef59d/models/be848d83b9@b2162e7e50?embedToken=1ff6dd8fe5ac4a45acc36b0254c16968c7c1f2b356#embed=%7B%22isEnabled%22%3Atrue%2C%22isTransparent%22%3Atrue%2C%22noScroll%22%3Atrue%7D"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Open in Speckle <span aria-hidden="true">↗</span></a
+            >
+          </div>
+        </div>
+        <div
+          class="example-panel"
+          role="tabpanel"
+          id="example-tekla"
+          aria-labelledby="example-tab-tekla"
+          tabindex="0"
+          hidden
+        >
+          <iframe
+            title="Tekla Structures model read from TrimBIM and displayed in Speckle"
+            data-src="https://next.speckle.dev/projects/86b59ef59d/models/c111e1ad9e@2c242152f5?embedToken=148ab7c642a18248f32447d6ec7c2dd274ba992ea0#embed=%7B%22isEnabled%22%3Atrue%2C%22isTransparent%22%3Atrue%2C%22noScroll%22%3Atrue%7D"
+            loading="lazy"
+            allow="fullscreen; clipboard-write"
+            allowfullscreen
+            referrerpolicy="strict-origin-when-cross-origin"
+          ></iframe>
+          <div class="example-meta">
+            <div>
+              <strong>Tekla Structures → TRB → Speckle</strong>
+              <p>Drag to orbit. Open in Speckle for a larger view.</p>
+            </div>
+            <a
+              href="https://next.speckle.dev/projects/86b59ef59d/models/c111e1ad9e@2c242152f5?embedToken=148ab7c642a18248f32447d6ec7c2dd274ba992ea0#embed=%7B%22isEnabled%22%3Atrue%2C%22isTransparent%22%3Atrue%2C%22noScroll%22%3Atrue%7D"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Open in Speckle <span aria-hidden="true">↗</span></a
+            >
+          </div>
+        </div>
+        <noscript
+          ><p class="examples-fallback">
+            Open the outputs in Speckle:
+            <a
+              href="https://next.speckle.dev/projects/86b59ef59d/models/ea662a7613@d8093bb55a?embedToken=846ea2fb9118a29f3126c6cd89712283b7350003d8#embed=%7B%22isEnabled%22%3Atrue%2C%22isTransparent%22%3Atrue%2C%22noScroll%22%3Atrue%7D"
+              >IFC</a
+            >,
+            <a
+              href="https://next.speckle.dev/projects/86b59ef59d/models/be848d83b9@b2162e7e50?embedToken=1ff6dd8fe5ac4a45acc36b0254c16968c7c1f2b356#embed=%7B%22isEnabled%22%3Atrue%2C%22isTransparent%22%3Atrue%2C%22noScroll%22%3Atrue%7D"
+              >SketchUp</a
+            >
+            or
+            <a
+              href="https://next.speckle.dev/projects/86b59ef59d/models/c111e1ad9e@2c242152f5?embedToken=148ab7c642a18248f32447d6ec7c2dd274ba992ea0#embed=%7B%22isEnabled%22%3Atrue%2C%22isTransparent%22%3Atrue%2C%22noScroll%22%3Atrue%7D"
+              >Tekla Structures</a
+            >.
+          </p></noscript
+        >
+      </section>
+
+      <section
+        class="capabilities wrap section-space"
+        id="capabilities"
+        aria-labelledby="capabilities-title"
+      >
+        <div class="section-intro">
+          <p class="eyebrow">03 / EXTRACTED DATA</p>
+          <h2 id="capabilities-title">
+            Geometry, properties<br />and model structure.
+          </h2>
+          <p>
+            Use the reader for file conversion, property extraction and model
+            analysis. Decode the geometry you need and pass the results to your
+            own viewer, database or processing pipeline.
+          </p>
+        </div>
+        <div class="capability-list">
+          <article>
+            <span class="item-number">01</span>
+            <div>
+              <h3>Geometry and materials</h3>
+              <p>
+                Read triangle meshes, triangulate boundary representations and
+                tessellate supported reinforcement sweeps. Get positions,
+                normals, UVs and indices, together with instance placements,
+                layers and surface materials.
+              </p>
+              <span class="technical-label"
+                >MESHES · PLACEMENTS · MATERIALS</span
+              >
+            </div>
+          </article>
+          <article>
+            <span class="item-number">02</span>
+            <div>
+              <h3>Object properties</h3>
+              <p>
+                Resolve typed property values and property sets for each entity.
+                Read object classes and identifiers, including GUIDs and IFC
+                GlobalIds. Export resolved properties as CSV for spreadsheets or
+                further analysis.
+              </p>
+              <span class="technical-label"
+                >IDENTITIES · CLASSES · PROPERTIES</span
+              >
+            </div>
+          </article>
+          <article>
+            <span class="item-number">03</span>
+            <div>
+              <h3>Hierarchy and instances</h3>
+              <p>
+                Read parent–child relationships and connect geometry instances
+                to their entities. Shared geometry definitions remain separate
+                from placements, so applications can preserve instancing.
+              </p>
+              <span class="technical-label"
+                >ENTITIES · HIERARCHY · INSTANCING</span
+              >
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section
+        class="quickstart section-space"
+        id="quickstart"
+        aria-labelledby="quickstart-title"
+      >
+        <div class="wrap">
+          <div class="quickstart-heading">
+            <div>
+              <p class="eyebrow">04 / USING THE SDK</p>
+              <h2 id="quickstart-title">
+                Read a file.<br />Work with its contents.
+              </h2>
+            </div>
+            <p>
+              Build the TypeScript package from source, then use the
+              command-line tools or import the reader into your application.
+            </p>
+          </div>
+          <div class="quickstart-grid">
+            <div class="step-copy">
+              <span class="step-label">STEP 01</span>
+              <h3>Build the reader</h3>
+              <p>
+                You’ll need Node.js 18 or newer and npm. The SDK has no runtime
+                dependencies.
+              </p>
+              <a
+                class="inline-link"
+                href="https://github.com/specklesystems/trb-sdk"
+                >Source and documentation <span aria-hidden="true">↗</span></a
+              >
+            </div>
+            <div class="code-panel">
+              <div class="code-header">
+                <span>Terminal</span
+                ><button
+                  class="copy-button"
+                  type="button"
+                  data-copy="build-code"
+                  aria-label="Copy SDK build commands"
+                >
+                  Copy
+                </button>
+              </div>
+              <pre><code id="build-code">git clone https://github.com/specklesystems/trb-sdk.git
+cd trb-sdk
+npm ci
+npm run build</code></pre>
+            </div>
+            <div class="step-copy">
+              <span class="step-label">STEP 02</span>
+              <h3>Inspect or export a model</h3>
+              <p>
+                Point the tools at a local <code>.trb</code> file. Inspect its
+                contents, export properties to CSV, or create a USDZ file with
+                instanced geometry and materials.
+              </p>
+              <a
+                class="inline-link"
+                href="https://github.com/specklesystems/trb-sdk#cli"
+                >Command-line tools <span aria-hidden="true">↗</span></a
+              >
+            </div>
+            <div class="code-panel">
+              <div class="code-header">
+                <span>Terminal</span
+                ><button
+                  class="copy-button"
+                  type="button"
+                  data-copy="export-code"
+                  aria-label="Copy model export commands"
+                >
+                  Copy
+                </button>
+              </div>
+              <pre><code id="export-code">node dist/inspect.js model.trb
+
+node dist/export-csv.js model.trb properties.csv
+node dist/export-usdz.js model.trb model.usdz</code></pre>
+              <div class="code-note">
+                Exporters process supported geometry. See the
+                <a
+                  href="https://github.com/specklesystems/trb-sdk/blob/main/docs/support-matrix.md"
+                  >support matrix</a
+                >
+                for current coverage.
+              </div>
+            </div>
+            <div class="step-copy">
+              <span class="step-label">READER API</span>
+              <h3>Decode what you need</h3>
+              <p>
+                Open an <code>ArrayBuffer</code> or <code>Uint8Array</code>,
+                then read entities, properties and geometry on demand. The same
+                reader works in Node.js and the browser.
+              </p>
+              <a
+                class="inline-link"
+                href="https://github.com/specklesystems/trb-sdk#use"
+                >API examples <span aria-hidden="true">↗</span></a
+              >
+            </div>
+            <div class="code-panel">
+              <div class="code-header">
+                <span>JavaScript · in the cloned repository</span
+                ><button
+                  class="copy-button"
+                  type="button"
+                  data-copy="api-code"
+                  aria-label="Copy reader API example"
+                >
+                  Copy
+                </button>
+              </div>
+              <pre><code id="api-code">import { readFileSync } from 'node:fs';
+import { TrimBimReader } from './dist/index.js';
+
+const model = TrimBimReader.open(
+  readFileSync('model.trb'), { strict: true }
+);
+const properties = model.propertiesByEntity();
+
+for (const instance of model.allInstances()) {
+  const geometry = model.decode(instance);
+  if (geometry.kind === 'triangles') {
+    console.log(instance.entityIndex,
+      geometry.positions, geometry.indices,
+      properties.get(instance.entityIndex));
+  }
+}</code></pre>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="support wrap section-space"
+        id="support"
+        aria-labelledby="support-title"
+      >
+        <div>
+          <p class="eyebrow">05 / FORMAT SUPPORT</p>
+          <h2 id="support-title">Supported formats<br />and limitations.</h2>
+          <p>
+            The reader is validated against TrimBIM files from IFC, SketchUp,
+            Navisworks and Tekla writers. Coverage depends on the geometry types
+            stored in the file.
+          </p>
+          <a
+            class="inline-link"
+            href="https://github.com/specklesystems/trb-sdk/blob/main/docs/support-matrix.md"
+            >Read the full support matrix <span aria-hidden="true">↗</span></a
+          >
+        </div>
+        <div class="support-details">
+          <dl>
+            <div>
+              <dt>File format</dt>
+              <dd>TrimBIM (.trb), validated against TRB8</dd>
+            </div>
+            <div>
+              <dt>Runtime</dt>
+              <dd>
+                Node.js 18+ and modern browsers. Export commands run in Node.js.
+              </dd>
+            </div>
+            <div>
+              <dt>Distribution</dt>
+              <dd>
+                TypeScript source, compiled JavaScript and type declarations
+              </dd>
+            </div>
+            <div>
+              <dt>Licence</dt>
+              <dd>
+                <a
+                  href="https://github.com/specklesystems/trb-sdk/blob/main/LICENSE"
+                  >GNU AGPL v3.0 <span aria-hidden="true">↗</span></a
+                >
+              </dd>
+            </div>
+            <div>
+              <dt>Compatibility</dt>
+              <dd>
+                TrimBIM has no published compatibility guarantee. Strict mode
+                rejects versions other than TRB8; unsupported geometry types are
+                reported by the decoder.
+              </dd>
+            </div>
+          </dl>
+          <p class="small-note">
+            Alignment curves, grid lines, graphics containers and bolts are
+            available through low-level accessors. Texture bytes and
+            georeferencing are also low-level; these are not yet exposed by the
+            high-level reader API.
+          </p>
+        </div>
+      </section>
+
+      <section class="closing wrap">
+        <div>
+          <p class="eyebrow">TYPESCRIPT LIBRARY AND COMMAND-LINE TOOLS</p>
+          <h2>Source and documentation</h2>
+        </div>
+        <a
+          class="button button-primary"
+          href="https://github.com/specklesystems/trb-sdk"
+          >View on GitHub <span aria-hidden="true">↗</span></a
+        >
+      </section>
+    </main>
+    <footer class="footer wrap">
+      <div>
+        <a href="https://speckle.systems" aria-label="Speckle website"
+          ><img
+            src="./assets/speckle.svg"
+            width="103"
+            height="26"
+            alt="Speckle"
+        /></a>
+        <p>Open-source TrimBIM file reader.</p>
+      </div>
+      <div class="footer-links">
+        <a href="https://speckle.systems"
+          >Speckle homepage <span aria-hidden="true">↗</span></a
+        ><a href="https://specklesystems.github.io/tekla-db1-sdk/"
+          >Tekla DB1 Reader <span aria-hidden="true">↗</span></a
+        ><a
+          href="https://github.com/specklesystems/trb-sdk/blob/main/CHANGELOG.md"
+          >Changelog</a
+        ><a href="https://github.com/specklesystems/trb-sdk/issues"
+          >Report an issue</a
+        >
+      </div>
+      <p class="trademark">
+        Trimble, Trimble Connect and TrimBIM are trademarks of Trimble Inc. This
+        project is independent and is not affiliated with or endorsed by
+        Trimble.
+      </p>
+    </footer>
+    <span class="sr-only" role="status" id="copy-status"></span>
+  </body>
+</html>
