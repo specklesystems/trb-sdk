@@ -4,8 +4,9 @@ SDK for **TrimBIM** (`.trb`) files, the format of Trimble Connect's Web3D
 viewer: a reader, a corpus verifier, and example exporters. Zero runtime
 dependencies, works in Node and in the browser.
 
-The repository includes a diagram, output examples and quickstart site for GitHub Pages.
-See [the release-site guide](docs/release-site.md) to preview or publish it.
+[Live examples and quickstart](https://specklesystems.github.io/trb-sdk/)
+show the model workflow and outputs from IFC, SketchUp and Tekla Structures.
+See [the release-site guide](docs/release-site.md) to preview or update the site.
 
 TrimBIM is a FlatBuffers document with a columnar layout: entities, geometry
 and properties live in pooled parallel arrays and reference each other by

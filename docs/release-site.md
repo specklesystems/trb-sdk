@@ -4,6 +4,8 @@ The TRB reader site lives in `site/`. It is plain HTML, CSS and JavaScript,
 with no frontend dependencies or SDK runtime in the page. Its style and
 Speckle logo are shared with the Tekla DB1 release site.
 
+Public site: <https://specklesystems.github.io/trb-sdk/>
+
 ## Preview
 
 From the repository root:
@@ -60,6 +62,12 @@ Enter or Space activates a tab, and Home/End move to the first/last tab.
 The links in each panel open the same shared output in a larger viewer.
 
 ## Publication
+
+GitHub Pages is configured to deploy with GitHub Actions. Merging changes to
+`site/` or its workflow into `main` publishes them automatically. For a manual
+redeployment, run **Release site** from the Actions tab on `main`.
+
+To configure the site again:
 
 1. Make sure the repository is ready for public access, including its source
    and linked documentation. The workflow does not change repository visibility.
