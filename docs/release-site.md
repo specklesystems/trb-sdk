@@ -35,6 +35,30 @@ The quickstart builds from source. Add registry install instructions only
 after an npm package has been published. Keep the diagram destinations and
 support descriptions aligned with actual SDK capabilities.
 
+## Output examples
+
+The page embeds these user-selected outputs from the `TRB corpus e2e` project
+(`86b59ef59d`) on `next.speckle.dev`:
+
+| Source           | Model        | Pinned version |
+| ---------------- | ------------ | -------------- |
+| IFC              | `ea662a7613` | `d8093bb55a`   |
+| SketchUp         | `be848d83b9` | `b2162e7e50`   |
+| Tekla Structures | `c111e1ad9e` | `2c242152f5`   |
+
+The project remains workspace-visible. Each example uses its own model share
+token generated through Speckle's **Embed model → Copy iframe code** flow.
+These are deliberately shareable, read-only model links for the public examples,
+not personal API credentials. Access to each model was verified using only its
+share token, with no account cookies or personal token. Revoking an example's
+share link will stop its embed working; generate a replacement through the same
+UI and update the iframe, companion link and no-JavaScript link together.
+
+Only the selected example loads. Switching tabs unloads the previous iframe
+to avoid retaining multiple large viewer scenes. Arrow keys move between tabs;
+Enter or Space activates a tab, and Home/End move to the first/last tab.
+The links in each panel open the same shared output in a larger viewer.
+
 ## Publication
 
 1. Make sure the repository is ready for public access, including its source

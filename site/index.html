@@ -36,7 +36,7 @@
         ><span class="brand-product">TRB Reader</span></a
       >
       <nav aria-label="Main navigation">
-        <a href="#capabilities">What it reads</a>
+        <a href="#examples">Examples</a>
         <a href="#quickstart">Quickstart</a>
         <a class="repo-link" href="https://github.com/specklesystems/trb-sdk"
           >GitHub <span aria-hidden="true">↗</span></a
@@ -75,10 +75,8 @@
               <div class="hero-actions">
                 <a class="button button-primary" href="#quickstart"
                   >Use the reader <span aria-hidden="true">↓</span></a
-                ><a
-                  class="text-link"
-                  href="https://github.com/specklesystems/trb-sdk"
-                  >View the source <span aria-hidden="true">↗</span></a
+                ><a class="text-link" href="#examples"
+                  >View output examples <span aria-hidden="true">↓</span></a
                 >
               </div>
             </div>
@@ -131,9 +129,10 @@
                 <div class="destination">
                   <strong>CSV</strong><span>Object properties</span>
                 </div>
-                <div class="destination destination-speckle">
-                  <strong>Speckle</strong><span>Your integration</span>
-                </div>
+                <a class="destination destination-speckle" href="#examples">
+                  <strong>Speckle</strong
+                  ><span>View examples <span aria-hidden="true">↓</span></span>
+                </a>
                 <div class="destination">
                   <strong>Your application</strong><span>TypeScript API</span>
                 </div>
@@ -173,12 +172,170 @@
       </aside>
 
       <section
+        class="examples wrap section-space"
+        id="examples"
+        aria-labelledby="examples-title"
+      >
+        <div class="examples-heading">
+          <div>
+            <p class="eyebrow">02 / OUTPUT EXAMPLES</p>
+            <h2 id="examples-title">TRB output,<br />viewed in Speckle.</h2>
+          </div>
+          <p>
+            Models originating from IFC, SketchUp and Tekla Structures, read
+            from TrimBIM and displayed in Speckle. Choose a source format to
+            explore the output.
+          </p>
+        </div>
+        <div
+          class="example-tabs"
+          role="tablist"
+          aria-label="Example source format"
+        >
+          <button
+            type="button"
+            role="tab"
+            id="example-tab-ifc"
+            aria-controls="example-ifc"
+            aria-selected="true"
+            tabindex="0"
+          >
+            IFC
+          </button>
+          <button
+            type="button"
+            role="tab"
+            id="example-tab-skp"
+            aria-controls="example-skp"
+            aria-selected="false"
+            tabindex="-1"
+          >
+            SketchUp <span class="tab-extension">.skp</span>
+          </button>
+          <button
+            type="button"
+            role="tab"
+            id="example-tab-tekla"
+            aria-controls="example-tekla"
+            aria-selected="false"
+            tabindex="-1"
+          >
+            Tekla
+          </button>
+        </div>
+        <div
+          class="example-panel"
+          role="tabpanel"
+          id="example-ifc"
+          aria-labelledby="example-tab-ifc"
+          tabindex="0"
+        >
+          <iframe
+            title="IFC model read from TrimBIM and displayed in Speckle"
+            src="https://next.speckle.dev/projects/86b59ef59d/models/ea662a7613@d8093bb55a?embedToken=846ea2fb9118a29f3126c6cd89712283b7350003d8#embed=%7B%22isEnabled%22%3Atrue%2C%22isTransparent%22%3Atrue%2C%22noScroll%22%3Atrue%7D"
+            loading="lazy"
+            allow="fullscreen; clipboard-write"
+            allowfullscreen
+            referrerpolicy="strict-origin-when-cross-origin"
+          ></iframe>
+          <div class="example-meta">
+            <div>
+              <strong>IFC → TRB → Speckle</strong>
+              <p>Drag to orbit. Open in Speckle for a larger view.</p>
+            </div>
+            <a
+              href="https://next.speckle.dev/projects/86b59ef59d/models/ea662a7613@d8093bb55a?embedToken=846ea2fb9118a29f3126c6cd89712283b7350003d8#embed=%7B%22isEnabled%22%3Atrue%2C%22isTransparent%22%3Atrue%2C%22noScroll%22%3Atrue%7D"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Open in Speckle <span aria-hidden="true">↗</span></a
+            >
+          </div>
+        </div>
+        <div
+          class="example-panel"
+          role="tabpanel"
+          id="example-skp"
+          aria-labelledby="example-tab-skp"
+          tabindex="0"
+          hidden
+        >
+          <iframe
+            title="SketchUp model read from TrimBIM and displayed in Speckle"
+            data-src="https://next.speckle.dev/projects/86b59ef59d/models/be848d83b9@b2162e7e50?embedToken=1ff6dd8fe5ac4a45acc36b0254c16968c7c1f2b356#embed=%7B%22isEnabled%22%3Atrue%2C%22isTransparent%22%3Atrue%2C%22noScroll%22%3Atrue%7D"
+            loading="lazy"
+            allow="fullscreen; clipboard-write"
+            allowfullscreen
+            referrerpolicy="strict-origin-when-cross-origin"
+          ></iframe>
+          <div class="example-meta">
+            <div>
+              <strong>SketchUp → TRB → Speckle</strong>
+              <p>Drag to orbit. Open in Speckle for a larger view.</p>
+            </div>
+            <a
+              href="https://next.speckle.dev/projects/86b59ef59d/models/be848d83b9@b2162e7e50?embedToken=1ff6dd8fe5ac4a45acc36b0254c16968c7c1f2b356#embed=%7B%22isEnabled%22%3Atrue%2C%22isTransparent%22%3Atrue%2C%22noScroll%22%3Atrue%7D"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Open in Speckle <span aria-hidden="true">↗</span></a
+            >
+          </div>
+        </div>
+        <div
+          class="example-panel"
+          role="tabpanel"
+          id="example-tekla"
+          aria-labelledby="example-tab-tekla"
+          tabindex="0"
+          hidden
+        >
+          <iframe
+            title="Tekla Structures model read from TrimBIM and displayed in Speckle"
+            data-src="https://next.speckle.dev/projects/86b59ef59d/models/c111e1ad9e@2c242152f5?embedToken=148ab7c642a18248f32447d6ec7c2dd274ba992ea0#embed=%7B%22isEnabled%22%3Atrue%2C%22isTransparent%22%3Atrue%2C%22noScroll%22%3Atrue%7D"
+            loading="lazy"
+            allow="fullscreen; clipboard-write"
+            allowfullscreen
+            referrerpolicy="strict-origin-when-cross-origin"
+          ></iframe>
+          <div class="example-meta">
+            <div>
+              <strong>Tekla Structures → TRB → Speckle</strong>
+              <p>Drag to orbit. Open in Speckle for a larger view.</p>
+            </div>
+            <a
+              href="https://next.speckle.dev/projects/86b59ef59d/models/c111e1ad9e@2c242152f5?embedToken=148ab7c642a18248f32447d6ec7c2dd274ba992ea0#embed=%7B%22isEnabled%22%3Atrue%2C%22isTransparent%22%3Atrue%2C%22noScroll%22%3Atrue%7D"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Open in Speckle <span aria-hidden="true">↗</span></a
+            >
+          </div>
+        </div>
+        <noscript
+          ><p class="examples-fallback">
+            Open the outputs in Speckle:
+            <a
+              href="https://next.speckle.dev/projects/86b59ef59d/models/ea662a7613@d8093bb55a?embedToken=846ea2fb9118a29f3126c6cd89712283b7350003d8#embed=%7B%22isEnabled%22%3Atrue%2C%22isTransparent%22%3Atrue%2C%22noScroll%22%3Atrue%7D"
+              >IFC</a
+            >,
+            <a
+              href="https://next.speckle.dev/projects/86b59ef59d/models/be848d83b9@b2162e7e50?embedToken=1ff6dd8fe5ac4a45acc36b0254c16968c7c1f2b356#embed=%7B%22isEnabled%22%3Atrue%2C%22isTransparent%22%3Atrue%2C%22noScroll%22%3Atrue%7D"
+              >SketchUp</a
+            >
+            or
+            <a
+              href="https://next.speckle.dev/projects/86b59ef59d/models/c111e1ad9e@2c242152f5?embedToken=148ab7c642a18248f32447d6ec7c2dd274ba992ea0#embed=%7B%22isEnabled%22%3Atrue%2C%22isTransparent%22%3Atrue%2C%22noScroll%22%3Atrue%7D"
+              >Tekla Structures</a
+            >.
+          </p></noscript
+        >
+      </section>
+
+      <section
         class="capabilities wrap section-space"
         id="capabilities"
         aria-labelledby="capabilities-title"
       >
         <div class="section-intro">
-          <p class="eyebrow">02 / EXTRACTED DATA</p>
+          <p class="eyebrow">03 / EXTRACTED DATA</p>
           <h2 id="capabilities-title">
             Geometry, properties<br />and model structure.
           </h2>
@@ -244,7 +401,7 @@
         <div class="wrap">
           <div class="quickstart-heading">
             <div>
-              <p class="eyebrow">03 / USING THE SDK</p>
+              <p class="eyebrow">04 / USING THE SDK</p>
               <h2 id="quickstart-title">
                 Read a file.<br />Work with its contents.
               </h2>
@@ -377,7 +534,7 @@ for (const instance of model.allInstances()) {
         aria-labelledby="support-title"
       >
         <div>
-          <p class="eyebrow">04 / FORMAT SUPPORT</p>
+          <p class="eyebrow">05 / FORMAT SUPPORT</p>
           <h2 id="support-title">Supported formats<br />and limitations.</h2>
           <p>
             The reader is validated against TrimBIM files from IFC, SketchUp,
