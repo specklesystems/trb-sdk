@@ -717,10 +717,9 @@ code {
     font-size: 17px;
   }
   .flow-pipeline {
-    grid-template-columns: minmax(0, 1.1fr) 55px minmax(
-        135px,
-        0.65fr
-      ) 66px minmax(0, 1fr);
+    grid-template-columns:
+      minmax(0, 1.1fr) 55px minmax(135px, 0.65fr)
+      66px minmax(0, 1fr);
     padding: 28px 20px;
   }
   .flow-source {
